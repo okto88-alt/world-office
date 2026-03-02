@@ -6,4 +6,21 @@ body {
 
 canvas {
   display: block;
+
+}
+.panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #1e1e1e;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    transition: 0.3s;
+}
+
+.panel.active {
+    transform: translate(-50%, -50%) scale(1);
 }
