@@ -1,3 +1,8 @@
+let frame = 0;
+let frameSpeed = 0;
+const totalFrames = 4;
+const frameWidth = 64;
+const frameHeight = 64;
 const staffImg = new Image();
 staffImg.src = "staff.png";
 const canvas = document.getElementById("world");
@@ -34,8 +39,23 @@ function drawRoom(){
 }
 
 function drawCharacter(){
+
+    frameSpeed++;
+
+    if(frameSpeed > 10){
+        frame++;
+        frameSpeed = 0;
+
+        if(frame >= totalFrames){
+            frame = 0;
+        }
+    }
+
     ctx.drawImage(
         staffImg,
+        frame * frameWidth, 0,   // ambil frame
+        frameWidth,
+        frameHeight,
         characterX,
         canvas.height - 260,
         80,
@@ -111,6 +131,7 @@ function openPanel(){
 function closePanel(){
     document.getElementById("staffPanel").classList.remove("active");
 }
+
 
 
 
