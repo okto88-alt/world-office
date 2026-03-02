@@ -69,7 +69,7 @@ canvas.addEventListener("click", function(e){
         mouseY > monitorY &&
         mouseY < monitorY + monitorHeight
     ){
-        alert("Open Staff Panel");
+        openPanel();
     }
 
 });
@@ -81,3 +81,4 @@ function openPanel(){
 function closePanel(){
     document.getElementById("staffPanel").classList.remove("active");
 }
+
