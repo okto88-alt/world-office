@@ -9,19 +9,43 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
-let x = 0;
+let characterX = 100;
+
+function drawRoom(){
+
+    // WALL
+    ctx.fillStyle = "#2c2f33";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // FLOOR
+    ctx.fillStyle = "#23272a";
+    ctx.fillRect(0, canvas.height - 200, canvas.width, 200);
+
+    // DESK
+    ctx.fillStyle = "#8B5A2B";
+    ctx.fillRect(200, canvas.height - 260, 200, 60);
+
+    // SCREEN
+    ctx.fillStyle = "#00FFAA";
+    ctx.fillRect(250, canvas.height - 300, 100, 40);
+}
+
+function drawCharacter(){
+    ctx.fillStyle = "#FFD166";
+    ctx.fillRect(characterX, canvas.height - 260, 60, 120);
+}
 
 function animate(){
+
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    // contoh object hidup
-    ctx.fillStyle = "#00FFAA";
-    ctx.fillRect(x, 200, 120, 120);
+    drawRoom();
+    drawCharacter();
 
-    x += 2;
+    characterX += 1;
 
-    if(x > canvas.width){
-        x = -120;
+    if(characterX > canvas.width){
+        characterX = -60;
     }
 
     requestAnimationFrame(animate);
