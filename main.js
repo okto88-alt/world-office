@@ -1,5 +1,6 @@
 const canvas = document.getElementById("world");
 const ctx = canvas.getContext("2d");
+const tileSize = 64;
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -35,11 +36,33 @@ function drawCharacter(){
     ctx.fillRect(characterX, canvas.height - 260, 60, 120);
 }
 
+function drawTile(x, y, color){
+    ctx.fillStyle = color;
+    ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
+}
+
+function drawDiscoFloor(){
+
+    const floorMap = [
+        ["#ff4d4d","#4dff88","#4da6ff","#ffd24d"],
+        ["#4da6ff","#ffd24d","#ff4d4d","#4dff88"],
+        ["#ffd24d","#ff4d4d","#4dff88","#4da6ff"],
+        ["#4dff88","#4da6ff","#ffd24d","#ff4d4d"]
+    ];
+
+    for(let y=0; y<floorMap.length; y++){
+        for(let x=0; x<floorMap[y].length; x++){
+            drawTile(x+5, y+5, floorMap[y][x]);
+        }
+    }
+}
+
 function animate(){
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
     drawRoom();
+    drawDiscoFloor();
     drawCharacter();
 
     characterX += 1;
@@ -81,4 +104,5 @@ function openPanel(){
 function closePanel(){
     document.getElementById("staffPanel").classList.remove("active");
 }
+
 
