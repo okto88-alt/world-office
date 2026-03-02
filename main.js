@@ -1,3 +1,5 @@
+const staffImg = new Image();
+staffImg.src = "staff.png";
 const canvas = document.getElementById("world");
 const ctx = canvas.getContext("2d");
 const tileSize = 64;
@@ -32,8 +34,13 @@ function drawRoom(){
 }
 
 function drawCharacter(){
-    ctx.fillStyle = "#FFD166";
-    ctx.fillRect(characterX, canvas.height - 260, 60, 120);
+    ctx.drawImage(
+        staffImg,
+        characterX,
+        canvas.height - 260,
+        80,
+        120
+    );
 }
 
 function drawTile(x, y, color){
@@ -104,5 +111,6 @@ function openPanel(){
 function closePanel(){
     document.getElementById("staffPanel").classList.remove("active");
 }
+
 
 
