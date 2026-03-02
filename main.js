@@ -54,15 +54,20 @@ function animate(){
 animate();
 canvas.addEventListener("click", function(e){
 
-    let mouseX = e.clientX;
-    let mouseY = e.clientY;
+    let rect = canvas.getBoundingClientRect();
+    let mouseX = e.clientX - rect.left;
+    let mouseY = e.clientY - rect.top;
 
-    // klik monitor
+    let monitorX = 250;
+    let monitorY = canvas.height - 300;
+    let monitorWidth = 100;
+    let monitorHeight = 40;
+
     if(
-        mouseX > 250 &&
-        mouseX < 350 &&
-        mouseY > canvas.height - 300 &&
-        mouseY < canvas.height - 260
+        mouseX > monitorX &&
+        mouseX < monitorX + monitorWidth &&
+        mouseY > monitorY &&
+        mouseY < monitorY + monitorHeight
     ){
         alert("Open Staff Panel");
     }
