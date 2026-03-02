@@ -73,3 +73,11 @@ canvas.addEventListener("click", function(e){
     }
 
 });
+
+function openPanel(){
+    document.getElementById("staffPanel").classList.add("active");
+}
+
+function closePanel(){
+    document.getElementById("staffPanel").classList.remove("active");
+}
